@@ -1,0 +1,29 @@
+@font-face {
+  font-family: virtue;
+  src: url(./fonts/virtue.ttf);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: virtue;
+}
+
+body {
+  background-color: black;
+}
+
+header {
+  background-color: rgb(216, 216, 216);
+  border-radius: 20px 20px 0px 0px;
+}
+header h1 {
+  text-align: center;
+}
+.desktop {
+  width: 100vw;
+  height: 100vh;
+  border-radius: 20px 20px 0px 0px;
+  background: url(./media/Mac-Os-9-Wallpaper-10.jpg);
+  background-size: cover;
+}
