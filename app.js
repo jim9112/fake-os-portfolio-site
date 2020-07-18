@@ -1,5 +1,6 @@
 const aboutMeWindow = document.querySelector('.aboutMe');
 const aboutMeHeader = document.querySelector('.windowHeader');
+const aboutMeExitButton = document.querySelector('.aboutExit');
 
 const handleMouseDown = (element) => {
   let windowPosX = 0;
@@ -38,6 +39,13 @@ const handleMouseDown = (element) => {
   dragMouseDown();
 };
 
+// about me drag event listener
 aboutMeHeader.addEventListener('mousedown', () =>
   handleMouseDown(aboutMeWindow)
+);
+
+// about me exit button event listener
+aboutMeExitButton.addEventListener(
+  'click',
+  () => (aboutMeWindow.style.display = 'none')
 );

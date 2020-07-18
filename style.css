@@ -7,6 +7,7 @@
   padding: 0;
   margin: 0;
   font-family: virtue;
+  font-weight: 100;
 }
 
 body {
@@ -45,4 +46,19 @@ header h1 {
 .content {
   padding: 20px;
   text-indent: 2em;
+  border: 1px solid black;
+}
+.header {
+  text-align: center;
+  background: rgb(216, 216, 216);
+}
+.header p {
+  display: inline;
+  width: auto;
+}
+.header button {
+  float: left;
+  border: 1px solid black;
+  width: 17px;
+  height: 17px;
 }
