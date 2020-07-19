@@ -89,15 +89,21 @@ header h1 {
   text-align: right;
   margin-right: 50px;
   list-style-type: none;
+  
+}
+
+i {
   font-size: 3em;
   color: rgb(216, 216, 216);
 }
 i p {
+  max-width: 50px;
   font-size: 12px;
   color: black;
   text-align: center;
-  background: rgb(216, 216, 216);
+  /* background: rgb(216, 216, 216); */
   padding: 2px;
+  background: none;
 }
 .socialIcons img {
   width: 20px;

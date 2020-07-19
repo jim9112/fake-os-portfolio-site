@@ -7,6 +7,24 @@ const aboutMeIcon = document.querySelector('.aboutMeIcon');
 const projectsIcon = document.querySelector('.projectsIcon');
 
 let highestZidex = 1;
+
+
+// create icons in project window
+const createProjectsIcons = () => {
+  const projectIconWindow = document.querySelector('.projectIconWindow');
+  const iconHTML = [];
+  projectList.forEach(icon => {
+    iconHTML.push(`<i class="fas fa-folder aboutMeIcon">
+    <br />
+    <p>${icon.name}</p>
+    </i>`);
+  });
+  projectIconWindow.innerHTML = iconHTML.join(' ');
+  console.log(iconHTML);
+};
+
+
+
 // handles the opening and closing and movement of windows
 function HandleWindow(selectedWindow, icon) {
   const exitButton = selectedWindow.querySelector('.exit');
@@ -83,5 +101,7 @@ function HandleWindow(selectedWindow, icon) {
   selectedWindow.addEventListener('click', increaseZindex);
 }
 
+// on page load functions
+createProjectsIcons();
 const aboutWindow = HandleWindow(aboutMeWindow, aboutMeIcon);
 const myProjectsWindow = HandleWindow(projectsWindow, projectsIcon);

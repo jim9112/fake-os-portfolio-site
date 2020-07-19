@@ -1,6 +1,6 @@
 const projectList = [
   {
-    name: '140CharactersOfAwesome',
+    name: '140 Characters Of Awesome',
     location: 'https://vast-sands-68533.herokuapp.com/',
     image: 'media/social-media.png',
     description:
