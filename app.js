@@ -41,6 +41,19 @@ const handleMouseDown = (element) => {
   dragMouseDown();
 };
 
+// handle close window
+const closeWindow = (element, icon) => {
+  element.style.display = 'none';
+  icon.classList.remove('fa-folder-open');
+  icon.classList.add('fa-folder');
+};
+
+// handle open window
+const openWindow = (element, icon) => {
+  element.style.display = '';
+  icon.classList.remove('fa-folder');
+  icon.classList.add('fa-folder-open');
+};
 // ************* Event Listeners ***************
 // about me drag event listener
 aboutMeHeader.addEventListener('mousedown', () =>
@@ -48,14 +61,11 @@ aboutMeHeader.addEventListener('mousedown', () =>
 );
 
 // about me exit button event listener
-aboutMeExitButton.addEventListener('click', () => {
-  aboutMeWindow.style.display = 'none';
-  aboutMeIcon.classList.remove('fa-folder-open');
-  aboutMeIcon.classList.add('fa-folder');
-});
+aboutMeExitButton.addEventListener('click', () =>
+  closeWindow(aboutMeWindow, aboutMeIcon)
+);
 
-aboutMeIcon.addEventListener('click', () => {
-  aboutMeWindow.style.display = '';
-  aboutMeIcon.classList.remove('fa-folder');
-  aboutMeIcon.classList.add('fa-folder-open');
-});
+// about me icon listener
+aboutMeIcon.addEventListener('click', () =>
+  openWindow(aboutMeWindow, aboutMeIcon)
+);
