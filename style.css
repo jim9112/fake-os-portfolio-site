@@ -25,10 +25,9 @@ header h1 {
 .desktop {
   width: 100vw;
   height: 100vh;
-  border-radius: 20px 20px 0px 0px;
   background: url(./media/Mac-Os-9-Wallpaper-10.jpg);
   background-size: cover;
-  display: grid;
+  display: inline-grid;
 }
 
 .aboutMe {
@@ -61,4 +60,18 @@ header h1 {
   border: 1px solid black;
   width: 17px;
   height: 17px;
+}
+.links {
+  text-align: right;
+  margin-right: 50px;
+  list-style-type: none;
+  font-size: 3em;
+  color: rgb(216, 216, 216);
+}
+i p {
+  font-size: 12px;
+  color: black;
+  text-align: center;
+  background: rgb(216, 216, 216);
+  padding: 2px;
 }

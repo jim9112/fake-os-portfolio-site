@@ -4,14 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jimmy Hannan's Portfolio</title>
+    <script
+      src="https://kit.fontawesome.com/1e8b3354dc.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <header>
+      <h1>James Hannan's Portfolio</h1>
+    </header>
     <div class="desktop">
-      <header>
-        <h1>James Hannan's Portfolio</h1>
-      </header>
-      <div class="aboutMe window">
+      <div class="aboutMe window" style="display: none;">
         <div class="windowHeader header">
           <button class="aboutExit"></button>
           <p>About Me</p>
@@ -36,6 +40,21 @@
           </p>
         </div>
       </div>
+      <ul class="links">
+        <li>
+          <i class="fas fa-folder aboutMeIcon">
+            <br />
+            <p>About Me</p>
+          </i>
+        </li>
+        <li>
+          <i class="fas fa-folder">
+            <br />
+            <p>Projects</p>
+          </i>
+        </li>
+        <!-- <li><i class="fas fa-folder"></i></li> -->
+      </ul>
     </div>
 
     <script src="./app.js"></script>

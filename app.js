@@ -1,7 +1,9 @@
 const aboutMeWindow = document.querySelector('.aboutMe');
 const aboutMeHeader = document.querySelector('.windowHeader');
 const aboutMeExitButton = document.querySelector('.aboutExit');
+const aboutMeIcon = document.querySelector('.aboutMeIcon');
 
+// handle drag and drop for windows
 const handleMouseDown = (element) => {
   let windowPosX = 0;
   let windowPosY = 0;
@@ -39,13 +41,21 @@ const handleMouseDown = (element) => {
   dragMouseDown();
 };
 
+// ************* Event Listeners ***************
 // about me drag event listener
 aboutMeHeader.addEventListener('mousedown', () =>
   handleMouseDown(aboutMeWindow)
 );
 
 // about me exit button event listener
-aboutMeExitButton.addEventListener(
-  'click',
-  () => (aboutMeWindow.style.display = 'none')
-);
+aboutMeExitButton.addEventListener('click', () => {
+  aboutMeWindow.style.display = 'none';
+  aboutMeIcon.classList.remove('fa-folder-open');
+  aboutMeIcon.classList.add('fa-folder');
+});
+
+aboutMeIcon.addEventListener('click', () => {
+  aboutMeWindow.style.display = '';
+  aboutMeIcon.classList.remove('fa-folder');
+  aboutMeIcon.classList.add('fa-folder-open');
+});
