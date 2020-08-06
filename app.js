@@ -1,3 +1,6 @@
+// ********************** To Do***********************
+// remove event listeners when not needed
+
 const aboutMeWindow = document.querySelector('.aboutMe');
 const projectsWindow = document.querySelector('.projects');
 const aboutMeIcon = document.querySelector('.aboutMeIcon');
@@ -76,6 +79,7 @@ function HandleWindow(selectedWindow, icon) {
   exitButton.addEventListener('click', () => closeWindow(selectedWindow, icon));
   // icon listener
   icon.addEventListener('click', () => openWindow(selectedWindow, icon));
+  // increase zindex once window is clicked
   selectedWindow.addEventListener('click', increaseZindex);
 }
 
