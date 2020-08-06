@@ -1,12 +1,23 @@
 const aboutMeWindow = document.querySelector('.aboutMe');
+const projectsWindow = document.querySelector('.projects');
 const aboutMeIcon = document.querySelector('.aboutMeIcon');
+const projectsIcon = document.querySelector('.projectsIcon');
 
+let highestZidex = 1;
 // handles the opening and closing and movement of windows
 function HandleWindow(selectedWindow, icon) {
   const exitButton = selectedWindow.querySelector('.exit');
   const windowHeader = selectedWindow.querySelector('.windowHeader');
+  selectedWindow.style.zIndex = highestZidex;
+
+  const increaseZindex = () => {
+    highestZidex += 1;
+    selectedWindow.style.zIndex = highestZidex;
+  };
 
   const handleMouseDown = (element) => {
+    increaseZindex();
+
     let windowPosX = 0;
     let windowPosY = 0;
     let mousePosX = 0;
@@ -61,12 +72,12 @@ function HandleWindow(selectedWindow, icon) {
   windowHeader.addEventListener('mousedown', () =>
     handleMouseDown(selectedWindow)
   );
-
   // exit button event listener
   exitButton.addEventListener('click', () => closeWindow(selectedWindow, icon));
-
   // icon listener
   icon.addEventListener('click', () => openWindow(selectedWindow, icon));
+  selectedWindow.addEventListener('click', increaseZindex);
 }
 
 const aboutWindow = HandleWindow(aboutMeWindow, aboutMeIcon);
+const myProjectsWindow = HandleWindow(projectsWindow, projectsIcon);
