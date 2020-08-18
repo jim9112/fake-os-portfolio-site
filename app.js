@@ -22,10 +22,7 @@ const createProjectsIcons = () => {
     `);
   });
   projectIconWindow.innerHTML = iconHTML.join(' ');
-  console.log(iconHTML);
 };
-
-
 
 // handles the opening and closing and movement of windows
 function HandleWindow(selectedWindow, icon) {
@@ -46,6 +43,7 @@ function HandleWindow(selectedWindow, icon) {
     let mousePosX = 0;
     let mousePosY = 0;
 
+    // handles mouse down on window header
     const dragMouseDown = (e) => {
       e = e || window.event;
       e.preventDefault();
@@ -57,6 +55,7 @@ function HandleWindow(selectedWindow, icon) {
       // listen for mouse move
       document.onmousemove = elementDrag;
     };
+    // handles drag of window
     const elementDrag = (e) => {
       e = e || window.event;
       e.preventDefault();
@@ -69,6 +68,7 @@ function HandleWindow(selectedWindow, icon) {
       element.style.top = element.offsetTop - windowPosY + 'px';
       element.style.left = element.offsetLeft - windowPosX + 'px';
     };
+    // closes drag element functionality
     function closeDragElement() {
       // stop moving when mouse button is released:
       document.onmouseup = null;
