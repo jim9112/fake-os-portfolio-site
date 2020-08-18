@@ -50,8 +50,6 @@ header h1 {
   display: inline-grid;
 }
 
-.aboutMe {
-}
 
 .window {
   background-color: white;
@@ -59,21 +57,23 @@ header h1 {
   position: absolute;
   z-index: 9;
   max-width: 700px;
-  /*   justify-self: center;
-  align-self: center; */
+  min-width: 50vw;
   top: 100px;
   left: 200px;
 }
 .content {
   padding: 20px;
-  text-indent: 2em;
+  
   border: 1px solid black;
 }
+.indent {
+  text-indent: 2em;
+}
+
 .header {
   text-align: center;
   background: rgb(216, 216, 216);
   cursor: move;
-  /*   display: inline-grid; */
 }
 .header p {
   display: inline-grid;
@@ -89,12 +89,12 @@ header h1 {
   text-align: right;
   margin-right: 50px;
   list-style-type: none;
-  
 }
 
 i {
   font-size: 3em;
   color: rgb(216, 216, 216);
+  text-align: center;
 }
 i p {
   max-width: 50px;
@@ -113,4 +113,11 @@ i p {
 .gridContainer p {
   width: 100%;
   text-align: center;
+}
+
+.projectIconWindow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+  align-items: flex-start;
+  column-gap: .5rem;
 }

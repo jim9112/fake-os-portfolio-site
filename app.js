@@ -14,10 +14,12 @@ const createProjectsIcons = () => {
   const projectIconWindow = document.querySelector('.projectIconWindow');
   const iconHTML = [];
   projectList.forEach(icon => {
-    iconHTML.push(`<i class="fas fa-folder aboutMeIcon">
+    iconHTML.push(`
+    <i class="fas fa-folder aboutMeIcon">
     <br />
     <p>${icon.name}</p>
-    </i>`);
+    </i>
+    `);
   });
   projectIconWindow.innerHTML = iconHTML.join(' ');
   console.log(iconHTML);
