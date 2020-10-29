@@ -62,7 +62,6 @@ header h1 {
   top: 100px;
   left: 200px;
   display: flex;
-  justify-content: center;
   flex-direction: column;
   resize: both;
   overflow: scroll;
