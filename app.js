@@ -1,6 +1,7 @@
 // ********************** To Do***********************
 // remove event listeners when not needed
 import projectList from './js/projectList.js';
+import { closeWindow, openWindow } from './js/utils.js';
 
 const aboutMeWindow = document.querySelector('.aboutMe');
 const projectsWindow = document.querySelector('.projects');
@@ -10,7 +11,6 @@ const desktop = document.querySelector('.desktop');
 
 let highestZidex = 1;
 
-console.log('test');
 const createProjectsIcons = () => {
   const projectIconWindow = document.querySelector('.projectIconWindow');
   const iconHTML = [];
@@ -25,10 +25,11 @@ const createProjectsIcons = () => {
   projectIconWindow.innerHTML = iconHTML.join(' ');
 };
 
-const createProjectWindow = (projectName) => {
+const createNewWindow = (windowName) => {
   const newWindow = document.createElement('div');
   newWindow.style.display = 'none';
-  div.innerHTML = `<p>${projectName}</p>`;
+  div.innerHTML = `<p>${windowName}</p>`;
+  desktop.append(newWindow);
 };
 
 // handles the opening and closing and movement of windows
@@ -84,19 +85,6 @@ function HandleWindow(selectedWindow, icon) {
     dragMouseDown();
   };
 
-  // handle close window
-  const closeWindow = (element, icon) => {
-    element.style.display = 'none';
-    icon.classList.remove('fa-folder-open');
-    icon.classList.add('fa-folder');
-  };
-
-  // handle open window
-  const openWindow = (element, icon) => {
-    element.style.display = '';
-    icon.classList.remove('fa-folder');
-    icon.classList.add('fa-folder-open');
-  };
   // ************* Event Listeners ***************
   // drag event listener
   windowHeader.addEventListener('mousedown', () =>
