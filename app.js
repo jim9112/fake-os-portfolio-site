@@ -1,19 +1,20 @@
 // ********************** To Do***********************
 // remove event listeners when not needed
+import projectList from './js/projectList.js';
 
 const aboutMeWindow = document.querySelector('.aboutMe');
 const projectsWindow = document.querySelector('.projects');
 const aboutMeIcon = document.querySelector('.aboutMeIcon');
 const projectsIcon = document.querySelector('.projectsIcon');
+const desktop = document.querySelector('.desktop');
 
 let highestZidex = 1;
 
-
-// create icons in project window
+console.log('test');
 const createProjectsIcons = () => {
   const projectIconWindow = document.querySelector('.projectIconWindow');
   const iconHTML = [];
-  projectList.forEach(icon => {
+  projectList.forEach((icon) => {
     iconHTML.push(`
     <i class="fas fa-folder aboutMeIcon">
     <br />
@@ -22,6 +23,12 @@ const createProjectsIcons = () => {
     `);
   });
   projectIconWindow.innerHTML = iconHTML.join(' ');
+};
+
+const createProjectWindow = (projectName) => {
+  const newWindow = document.createElement('div');
+  newWindow.style.display = 'none';
+  div.innerHTML = `<p>${projectName}</p>`;
 };
 
 // handles the opening and closing and movement of windows

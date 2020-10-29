@@ -68,12 +68,7 @@ header h1 {
 }
 .content {
   padding: 20px;
-<<<<<<< HEAD
-
-=======
-  overflow: auto;
->>>>>>> 7e720dd834f7187913e43f155b946dde67adfe2f
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 .indent {
   text-indent: 2em;

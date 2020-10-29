@@ -41,3 +41,5 @@ const projectList = [
       'Another Treehouse project. A two person Tic Tac Toe game. JavaScript only no APIs',
   },
 ];
+
+export default projectList;
