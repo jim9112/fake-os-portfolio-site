@@ -62,7 +62,7 @@ header h1 {
 }
 .content {
   padding: 20px;
-  
+
   border: 1px solid black;
 }
 .indent {
@@ -96,7 +96,7 @@ i {
   text-align: center;
 }
 i p {
-  max-width: 50px;
+  /* max-width: 50px; */
   font-size: 12px;
   color: black;
   text-align: center;
@@ -118,5 +118,5 @@ i p {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
   align-items: flex-start;
-  column-gap: .5rem;
+  column-gap: 0.5rem;
 }
