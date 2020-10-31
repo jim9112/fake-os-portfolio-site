@@ -1,22 +1,23 @@
 // ********************** To Do***********************
-// remove event listeners when not needed
+// dynamically generate all windows
+// cascade new windows as they open
+
 import projectList from './js/projectList.js';
-import { closeWindow, openWindow } from './js/utils.js';
+import { createNewWindow, HandleWindow } from './js/utils.js';
 
 const aboutMeWindow = document.querySelector('.aboutMe');
 const projectsWindow = document.querySelector('.projects');
 const aboutMeIcon = document.querySelector('.aboutMeIcon');
 const projectsIcon = document.querySelector('.projectsIcon');
-const desktop = document.querySelector('.desktop');
-
-let highestZidex = 1;
 
 const createProjectsIcons = () => {
   const projectIconWindow = document.querySelector('.projectIconWindow');
   const iconHTML = [];
   projectList.forEach((icon) => {
     iconHTML.push(`
-    <i class="fas fa-folder project">
+    <i data-name=${icon.name
+      .split(' ')
+      .join('_')} class="fas fa-folder project">
     <br />
     <p>${icon.name}</p>
     </i>
@@ -24,89 +25,6 @@ const createProjectsIcons = () => {
   });
   projectIconWindow.innerHTML = iconHTML.join(' ');
 };
-
-const createNewWindow = (e) => {
-  console.log(e);
-  const newWindow = document.createElement('div');
-  // newWindow.style.display = 'none';
-  newWindow.innerHTML = `
-  <div class="windowHeader header">
-    <button class="exit"></button>
-    <p>New Window</p>
-  </div>
-  <div class="content indent">
-  </div>
-  `;
-  newWindow.classList.add('window');
-  desktop.append(newWindow);
-  const newWindowHandler = HandleWindow(newWindow, e.target);
-};
-
-// handles the opening and closing and movement of windows
-function HandleWindow(selectedWindow, icon) {
-  const exitButton = selectedWindow.querySelector('.exit');
-  const windowHeader = selectedWindow.querySelector('.windowHeader');
-  selectedWindow.style.zIndex = highestZidex + 1;
-
-  const increaseZindex = () => {
-    highestZidex += 1;
-    selectedWindow.style.zIndex = highestZidex;
-  };
-
-  const handleMouseDown = (element) => {
-    increaseZindex();
-
-    let windowPosX = 0;
-    let windowPosY = 0;
-    let mousePosX = 0;
-    let mousePosY = 0;
-
-    // handles mouse down on window header
-    const dragMouseDown = (e) => {
-      e = e || window.event;
-      e.preventDefault();
-      // get mouse cursor position at start
-      mousePosX = e.clientX;
-      mousePosY = e.clientY;
-      // close function on mouse up
-      document.onmouseup = closeDragElement;
-      // listen for mouse move
-      document.onmousemove = elementDrag;
-    };
-    // handles drag of window
-    const elementDrag = (e) => {
-      e = e || window.event;
-      e.preventDefault();
-      // calculate new cursor position
-      windowPosX = mousePosX - e.clientX;
-      windowPosY = mousePosY - e.clientY;
-      mousePosX = e.clientX;
-      mousePosY = e.clientY;
-      // set elements new position
-      element.style.top = element.offsetTop - windowPosY + 'px';
-      element.style.left = element.offsetLeft - windowPosX + 'px';
-    };
-    // closes drag element functionality
-    function closeDragElement() {
-      // stop moving when mouse button is released:
-      document.onmouseup = null;
-      document.onmousemove = null;
-    }
-    dragMouseDown();
-  };
-
-  // ************* Event Listeners ***************
-  // drag event listener
-  windowHeader.addEventListener('mousedown', () =>
-    handleMouseDown(selectedWindow)
-  );
-  // exit button event listener
-  exitButton.addEventListener('click', () => closeWindow(selectedWindow, icon));
-  // icon listener
-  icon.addEventListener('click', () => openWindow(selectedWindow, icon));
-  // increase zindex once window is clicked
-  selectedWindow.addEventListener('click', increaseZindex);
-}
 
 // on page load functions
 createProjectsIcons();
