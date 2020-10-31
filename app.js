@@ -16,7 +16,7 @@ const createProjectsIcons = () => {
   const iconHTML = [];
   projectList.forEach((icon) => {
     iconHTML.push(`
-    <i class="fas fa-folder aboutMeIcon">
+    <i class="fas fa-folder project">
     <br />
     <p>${icon.name}</p>
     </i>
@@ -25,18 +25,28 @@ const createProjectsIcons = () => {
   projectIconWindow.innerHTML = iconHTML.join(' ');
 };
 
-const createNewWindow = (windowName) => {
+const createNewWindow = (e) => {
+  console.log(e);
   const newWindow = document.createElement('div');
-  newWindow.style.display = 'none';
-  div.innerHTML = `<p>${windowName}</p>`;
+  // newWindow.style.display = 'none';
+  newWindow.innerHTML = `
+  <div class="windowHeader header">
+    <button class="exit"></button>
+    <p>New Window</p>
+  </div>
+  <div class="content indent">
+  </div>
+  `;
+  newWindow.classList.add('window');
   desktop.append(newWindow);
+  const newWindowHandler = HandleWindow(newWindow, e.target);
 };
 
 // handles the opening and closing and movement of windows
 function HandleWindow(selectedWindow, icon) {
   const exitButton = selectedWindow.querySelector('.exit');
   const windowHeader = selectedWindow.querySelector('.windowHeader');
-  selectedWindow.style.zIndex = highestZidex;
+  selectedWindow.style.zIndex = highestZidex + 1;
 
   const increaseZindex = () => {
     highestZidex += 1;
@@ -100,5 +110,12 @@ function HandleWindow(selectedWindow, icon) {
 
 // on page load functions
 createProjectsIcons();
+
+const individualProjectIcons = document.querySelectorAll('.project');
+
 const aboutWindow = HandleWindow(aboutMeWindow, aboutMeIcon);
 const myProjectsWindow = HandleWindow(projectsWindow, projectsIcon);
+// event handlers
+individualProjectIcons.forEach((icon) =>
+  icon.addEventListener('click', (e) => createNewWindow(e))
+);
