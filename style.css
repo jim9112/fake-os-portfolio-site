@@ -44,10 +44,10 @@ header h1 {
 }
 
 .desktop {
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   background: url(./media/Mac-Os-9-Wallpaper-10.jpg);
-  background-size: cover;
+  background-size: auto;
   display: inline-grid;
 }
 
@@ -64,10 +64,11 @@ header h1 {
   display: flex;
   flex-direction: column;
   resize: both;
-  overflow: scroll;
+  overflow: auto;
 }
 .content {
   padding: 20px;
+  overflow: scroll;
   /* border: 1px solid black; */
 }
 .indent {
