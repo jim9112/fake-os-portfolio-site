@@ -9,7 +9,6 @@ const closeWindow = (element, icon) => {
 };
 
 const openWindow = (element, icon) => {
-  element.style.display = '';
   icon.classList.remove('fa-folder');
   icon.classList.add('fa-folder-open');
 };
@@ -20,7 +19,7 @@ const increaseZindex = (selectedWindow) => {
 };
 
 // handles the opening and closing and movement of windows
-const createNewWindow = (e, content) => {
+const createNewWindow = (e, content, classlist) => {
   console.log(e.target.dataset.name);
   // get name of new window from icon data set
   const elName = e.target.dataset.name.split('_').join(' ');
@@ -28,10 +27,10 @@ const createNewWindow = (e, content) => {
   const newWindow = document.createElement('div');
   newWindow.innerHTML = `
   <div class="windowHeader header">
-    <button class="exit"></button>
+    <button class="exit "></button>
     <p>${elName}</p>
   </div>
-  <div class="content indent">
+  <div class="content ${classlist ? classlist : ''}">
   ${content}
   </div>
   `;
@@ -96,7 +95,7 @@ function HandleWindow(selectedWindow, icon) {
   // exit button event listener
   exitButton.addEventListener('click', () => closeWindow(selectedWindow, icon));
   // icon listener
-  icon.addEventListener('click', () => openWindow(selectedWindow, icon));
+  // icon.addEventListener('click', () => openWindow(selectedWindow, icon));
   // increase zindex once window is clicked
   selectedWindow.addEventListener('click', () =>
     increaseZindex(selectedWindow)
