@@ -14,6 +14,11 @@ const openWindow = (element, icon) => {
   icon.classList.add('fa-folder-open');
 };
 
+const increaseZindex = (selectedWindow) => {
+  highestZidex += 1;
+  selectedWindow.style.zIndex = highestZidex;
+};
+
 // handles the opening and closing and movement of windows
 const createNewWindow = (e) => {
   console.log(e.target.dataset.name);
@@ -40,13 +45,8 @@ function HandleWindow(selectedWindow, icon) {
   const windowHeader = selectedWindow.querySelector('.windowHeader');
   selectedWindow.style.zIndex = highestZidex + 1;
 
-  const increaseZindex = () => {
-    highestZidex += 1;
-    selectedWindow.style.zIndex = highestZidex;
-  };
-
   const handleMouseDown = (element) => {
-    increaseZindex();
+    increaseZindex(selectedWindow);
 
     let windowPosX = 0;
     let windowPosY = 0;
@@ -97,7 +97,9 @@ function HandleWindow(selectedWindow, icon) {
   // icon listener
   icon.addEventListener('click', () => openWindow(selectedWindow, icon));
   // increase zindex once window is clicked
-  selectedWindow.addEventListener('click', increaseZindex);
+  selectedWindow.addEventListener('click', () =>
+    increaseZindex(selectedWindow)
+  );
 }
 
 export { closeWindow, openWindow, createNewWindow, HandleWindow };
