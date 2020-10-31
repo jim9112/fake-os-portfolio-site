@@ -20,7 +20,7 @@ const increaseZindex = (selectedWindow) => {
 };
 
 // handles the opening and closing and movement of windows
-const createNewWindow = (e) => {
+const createNewWindow = (e, content) => {
   console.log(e.target.dataset.name);
   // get name of new window from icon data set
   const elName = e.target.dataset.name.split('_').join(' ');
@@ -32,6 +32,7 @@ const createNewWindow = (e) => {
     <p>${elName}</p>
   </div>
   <div class="content indent">
+  ${content}
   </div>
   `;
   newWindow.classList.add('window', 'newWindow');

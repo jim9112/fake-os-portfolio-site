@@ -9,9 +9,9 @@ const aboutMeWindow = document.querySelector('.aboutMe');
 const projectsWindow = document.querySelector('.projects');
 const aboutMeIcon = document.querySelector('.aboutMeIcon');
 const projectsIcon = document.querySelector('.projectsIcon');
+const projectIconWindow = document.querySelector('.projectIconWindow');
 
 const createProjectsIcons = () => {
-  const projectIconWindow = document.querySelector('.projectIconWindow');
   const iconHTML = [];
   projectList.forEach((icon) => {
     iconHTML.push(`
@@ -23,17 +23,21 @@ const createProjectsIcons = () => {
     </i>
     `);
   });
-  projectIconWindow.innerHTML = iconHTML.join(' ');
+  return iconHTML.join(' ');
 };
-
+const projectWindowContent = createProjectsIcons();
 // on page load functions
-createProjectsIcons();
-
+// createProjectsIcons();
+projectIconWindow.innerHTML = createProjectsIcons();
 const individualProjectIcons = document.querySelectorAll('.project');
 
 const aboutWindow = HandleWindow(aboutMeWindow, aboutMeIcon);
 const myProjectsWindow = HandleWindow(projectsWindow, projectsIcon);
 // event handlers
+// projectsIcon.addEventListener('click', (e) =>
+//   createNewWindow(e, projectWindowContent)
+// );
+
 individualProjectIcons.forEach((icon) =>
-  icon.addEventListener('click', (e) => createNewWindow(e))
+  icon.addEventListener('click', (e) => createNewWindow(e, '<p>Test</p>'))
 );
