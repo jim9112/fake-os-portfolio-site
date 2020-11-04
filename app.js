@@ -1,5 +1,4 @@
 // ********************** To Do***********************
-// dynamically generate all windows
 // cascade new windows as they open
 
 import projectList from './js/projectList.js';

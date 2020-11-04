@@ -1,5 +1,7 @@
 const desktop = document.querySelector('.desktop');
 let highestZidex = 1;
+let windowTop = 50;
+let windowLeft = 50;
 
 const closeWindow = (element, icon) => {
   // element.style.display = 'none';
@@ -8,7 +10,7 @@ const closeWindow = (element, icon) => {
   icon.classList.add('fa-folder');
 };
 
-const openWindow = (element, icon) => {
+const openWindow = (icon) => {
   icon.classList.remove('fa-folder');
   icon.classList.add('fa-folder-open');
 };
@@ -18,9 +20,17 @@ const increaseZindex = (selectedWindow) => {
   selectedWindow.style.zIndex = highestZidex;
 };
 
-// handles the opening and closing and movement of windows
+const cascadeWindow = (newWindow) => {
+  newWindow.style.top = windowTop + 'px';
+  newWindow.style.left = windowLeft + 'px';
+  windowTop += 10;
+  windowLeft += 10;
+};
+
+// generates new window
 const createNewWindow = (e, content, classlist) => {
-  console.log(e.target.dataset.name);
+  console.log(e.target);
+  openWindow(e.target);
   // get name of new window from icon data set
   const elName = e.target.dataset.name.split('_').join(' ');
   // create new genaric window with icon name
@@ -35,14 +45,17 @@ const createNewWindow = (e, content, classlist) => {
   </div>
   `;
   newWindow.classList.add('window', 'newWindow');
+  cascadeWindow(newWindow);
   desktop.append(newWindow);
   // add drag, open, and close functionality
   const newWindowHandler = HandleWindow(newWindow, e.target);
 };
 
+// handles the opening and closing and movement of windows
 function HandleWindow(selectedWindow, icon) {
   const exitButton = selectedWindow.querySelector('.exit');
   const windowHeader = selectedWindow.querySelector('.windowHeader');
+  // initially set z index 1 higher
   selectedWindow.style.zIndex = highestZidex + 1;
 
   const handleMouseDown = (element) => {
